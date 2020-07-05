@@ -1,0 +1,100 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-fluid">
+    <h2 class="text-center mt-5 mb-5">Atualizar Movimentação</h2>
+    <div class="container">
+      <form class="p5 m-5" #f="ngForm" (ngSubmit)="update(f)">
+        <a class="btn btn-primary mb-2" [routerLink]="['/movimentacoes']" role="button"
+          >Voltar</a
+        >
+        <div class="form-group">
+          <input
+            type="hidden"
+            class="form-control"
+            name="id" 
+            ngModel={{data.id}} 
+            required 
+            #id="ngModel"
+          />
+        </div>        
+        <div class="form-group">
+          <label for="nome_navio">Nome do navio</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome_navio"
+            placeholder="Nome do navio"
+            name="nomeNavio" 
+            ngModel={{data.nomeNavio}} 
+            required 
+            #nomeNavio="ngModel"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="numero_container">Data inicio</label>
+          <input
+            type="date"
+            class="form-control"
+            id="numero_container"
+            placeholder="Nº container"
+            name="dataInicio" 
+            ngModel={{data.dataInicio}} 
+            required #dataInicio="ngModel"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="numero_container">Data fim</label>
+            <input
+              type="date"
+              class="form-control"
+              id="numero_container"
+              placeholder="Nº container"
+              name="dataFim" 
+              ngModel={{data.dataFim}} 
+              required #dataFim="ngModel"
+            />
+          </div>
+        
+        <div class="form-group">
+          <label for="tipo_container">Selecione um container</label>
+          <select 
+            class="form-control" 
+            id="tipo_container"
+            name="containerId" 
+            ngModel
+            required 
+            #numeroContainer="ngModel"
+            >
+            <option selected>Selecione um container</option>
+            <option *ngFor="let d of dataContainer" value={{d.id}}>Nº: {{d.numeroContainer}}</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="tipo_container">Tipo Movimentação</label>
+          <select 
+            class="form-control" 
+            id="tipo_container"
+            name="tipoMovimentacao" 
+            ngModel={{data.tipoMovimentacao}} 
+            required 
+            #tipoMovimentacao="ngModel"
+            >
+            <option>Embarque</option>
+            <option>Desembarque</option>
+            <option>Gate In</option>
+            <option>Gate Out</option>
+            <option>Posicionamento</option>
+            <option>Pilha</option>
+            <option>Pesagem</option>
+            <option>Scanner</option>
+          </select>
+        </div>
+  
+    
+        <button type="submit" class="btn btn-success" >Salvar</button>
+      </form>
+    </div>
+  </div>
+  

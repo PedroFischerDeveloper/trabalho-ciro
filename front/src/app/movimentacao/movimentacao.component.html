@@ -1,0 +1,38 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="table-responsive p-5">
+    <h2 class="mt-5 mb-5 text-center">Movimentação</h2>
+    <a class="btn btn-lg btn-success mb-2 mt-2" [routerLink]="['/criar-container']" role="button">Criar</a>
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome do navio</th>
+          <th scope="col">Data inicio</th>
+          <th scope="col">Data fim</th>
+          <th scope="col">Tipo de movimentação</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of this.data; index as index">
+        <tr>
+          <th scope="row">{{d.id}}</th>
+          <td>{{d.nomeNavio}}</td>
+          <td>{{d.dataInicio}}</td>
+          <td>{{d.dataFim}}</td>
+          <td>{{d.tipoMovimentacao}}</td>
+          <a 
+            class="btn btn-primary text-light mr-2"   
+            [routerLink]="['/detalhe-movimentacoes', d.id]" 
+            role="button"
+          >Editar</a>
+
+          <a 
+            class="btn btn-danger text-light ml-2"  
+            (click)="deletarContainer(d.id)"
+            role="button">Deletar</a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

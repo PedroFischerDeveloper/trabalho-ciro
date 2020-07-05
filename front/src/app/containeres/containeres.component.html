@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="table-responsive p-5">
+    <h2 class="mt-5 mb-5 text-center">Containeres</h2>
+    <a class="btn btn-lg btn-success mb-2 mt-2" [routerLink]="['/criar-container']" role="button">Criar</a>
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Nº Container</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Status</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of this.data; index as index">
+        <tr>
+          <th scope="row">{{ d.id }}</th>
+          <td>{{ d.nomeCliente }}</td>
+          <td>{{ d.numeroContainer }}</td>
+          <td>{{ d.tipoContainer }}</td>
+          <td>{{ d.statusContainer }}</td>
+          <td>{{ d.categoriaContainer }}</td>
+          <a
+            class="btn btn-primary mr-2 text-light "
+            [routerLink]="['/detalhe-container', d.id]"
+            role="button"
+            >Editar</a
+          >
+          <a
+            class="btn btn-danger ml-2 text-light p-2"
+            (click)="deletarContainer(d.id)"
+            role="button"
+            >Deletar</a
+          >
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

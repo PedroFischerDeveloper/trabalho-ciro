@@ -1,0 +1,89 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <h2 class="text-center mt-2 mb-2">Registrar Movimentação</h2>
+    <div class="container">
+      <form class="p5 m-5" #f="ngForm" (ngSubmit)="create(f)">
+        <a class="btn btn-primary mb-2" [routerLink]="['/movimentacoes']" role="button"
+          >Voltar</a
+        >
+        <div class="form-group">
+          <label class="font-weight-bold" for="nome_cliente">Nome do navio</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome_cliente"
+            placeholder="Nome do cliente"
+            name="nomeNavio" 
+            ngModel 
+            required 
+            #nomeNavio="ngModel"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label class="font-weight-bold" for="numero_container">Data inicio</label>
+          <input
+            type="date"
+            class="form-control"
+            id="numero_container"
+            placeholder="Nº container"
+            name="dataInicio" 
+            ngModel 
+            required #dataInicio="ngModel"
+          />
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold" for="numero_container">Data fim</label>
+            <input
+              type="date"
+              class="form-control"
+              id="numero_container"
+              placeholder="Nº container"
+              name="dataFim" 
+              ngModel 
+              required #dataFim="ngModel"
+            />
+          </div>
+
+        <div class="form-group">
+          <label  class="font-weight-bold" for="tipo_container">Selecione um container</label>
+          <select 
+            class="form-control" 
+            id="tipo_container"
+            name="containerId" 
+            ngModel
+            required 
+            #numeroContainer="ngModel"
+            >
+            <option *ngFor="let d of dataContainer" value={{d.id}}>Nº: {{d.numeroContainer}}</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label class="font-weight-bold" for="tipo_container">Tipo Movimentação</label>
+          <select 
+            class="form-control" 
+            id="tipo_container"
+            name="tipoMovimentacao" 
+            ngModel 
+            required 
+            #tipoMovimentacao="ngModel"
+            >
+            <option>Embarque</option>
+            <option>Desembarque</option>
+            <option>Gate In</option>
+            <option>Gate Out</option>
+            <option>Posicionamento</option>
+            <option>Pilha</option>
+            <option>Pesagem</option>
+            <option>Scanner</option>
+          </select>
+        </div>
+  
+    
+        <button type="submit" class="btn btn-success" >Salvar</button>
+      </form>
+    </div>
+  </div>
+  
