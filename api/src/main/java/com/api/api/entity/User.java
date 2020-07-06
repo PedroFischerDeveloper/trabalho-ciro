@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_usuarios")
-public class User {
+public class User implements Serializable {
     
     @Id
     private int id;
@@ -27,6 +29,4 @@ public class User {
     public String getPass() {
         return password;
     }
-    
-
 }

@@ -3,11 +3,16 @@ package com.api.api.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.xml.ws.Response;
+import org.apache.tomcat.util.http.parser.MediaType;
 import com.api.api.repository.UserRepository;
 import com.api.api.entity.AuthRequest;
 import com.api.api.entity.User;
 import com.api.api.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*")
@@ -30,15 +36,20 @@ public class UsuarioController {
     @Autowired
     private UserRepository repository;
 
-    @PostMapping("/authenticate")
-    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    public String token;
+
+
+    @PostMapping(value = "/authenticate", produces = "application/json")
+    public ResponseEntity<?> generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
         } catch (Exception ex) {
             throw new Exception("inavalid username/password");
         }
-        return jwtUtil.generateToken(authRequest.getUserName());
+        HttpHeaders httpHeaders = new HttpHeaders();
+        this.token = "token:{\"\"" + jwtUtil.generateToken(authRequest.getUserName()) + "}\"";
+        return new ResponseEntity<>(token, httpHeaders, HttpStatus.OK);
     }
 
     @PostMapping("/create")

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import { AuthServiceService } from '../services/auth-service.service'
+import {NgForm} from '@angular/forms';
+
+import {AuthType} from '../models/AuthType';
 
 interface dataPost {
   nomeCliente: String,
@@ -17,9 +20,9 @@ interface dataPost {
 })
 export class AuthComponent implements OnInit {
   
-  dataPOST:dataPost;
+  POST:AuthType;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authServiceService: AuthServiceService) { }
 
   ngOnInit(): void {
   }
@@ -30,9 +33,12 @@ export class AuthComponent implements OnInit {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
 
-    this.dataPOST = f.value;
+    this.POST = f.value;
+    console.log(this.POST)
     
-    this.http.post('http://localhost:8080/api/containers', JSON.stringify(this.dataPOST), httpOptions).subscribe();
+    this.authServiceService.login({userName:"pedro", password:"vaisegurando"}).subscribe((res) => {
+      console.log(res);
+    })
   }
 
 }

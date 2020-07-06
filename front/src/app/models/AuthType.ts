@@ -1,5 +1,5 @@
 export type AuthType = {
-  user: string;
+  userName: string;
   password: string;
 };
 
