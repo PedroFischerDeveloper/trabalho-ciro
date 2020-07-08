@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.api.api.repository.UserRepository;
 import com.api.api.entity.AuthRequest;
 import com.api.api.entity.User;
+import com.api.api.models.MovimentacaoModel;
 import com.api.api.util.JwtUtil;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
@@ -70,19 +71,16 @@ public class UsuarioController {
     }
 
     @PostMapping("/create")
-    public String signUp(@RequestBody User user) {
-     
+    public ResponseEntity<?> signUp(@RequestBody User user) {
         try {
-            repository.save(user);
-        } catch (Exception e) {
+        	repository.save(user);
             Gson g = new Gson();            
-            String msgJson = g.toJson("E-mail já cadastrado");
+            String msgJson = g.toJson("E-mail cadastrado");
             String response = g.toJson(msgJson);
-            return response;
+            return new ResponseEntity<>(repository.save(user), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        Gson g = new Gson();            
-        String msgJson = g.toJson("E-mail já cadastrado");
-        String response = g.toJson(msgJson);    
-        return response;
     }
+ 
 }
