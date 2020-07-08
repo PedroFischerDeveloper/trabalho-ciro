@@ -1,14 +1,20 @@
 package com.api.api.controller;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Optional;
 
 import javax.xml.ws.Response;
 import org.apache.tomcat.util.http.parser.MediaType;
+import org.json.JSONObject;
+
 import com.api.api.repository.UserRepository;
 import com.api.api.entity.AuthRequest;
 import com.api.api.entity.User;
 import com.api.api.util.JwtUtil;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -48,18 +54,35 @@ public class UsuarioController {
             throw new Exception("inavalid username/password");
         }
         HttpHeaders httpHeaders = new HttpHeaders();
-        this.token = "token:{\"\"" + jwtUtil.generateToken(authRequest.getUserName()) + "}\"";
-        return new ResponseEntity<>(token, httpHeaders, HttpStatus.OK);
+        String token = jwtUtil.generateToken(authRequest.getUserName());
+        String userName = authRequest.getUserName();
+        String[] response = new String[2];
+        
+        Gson g = new Gson();
+        String tokenJson = g.toJson(token);
+        String userJson = g.toJson(userName);
+        
+        response[0] = tokenJson;
+        response[1] = userJson;
+        
+        String responseJSon = g.toJson(response);
+        return new ResponseEntity<>(responseJSon, httpHeaders, HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public void signUp(@RequestBody User user) {
-        User userSave = BCryptPasswordEncoder(user.getPass());
-        repository.save(userSave);
+    public String signUp(@RequestBody User user) {
+     
+        try {
+            repository.save(user);
+        } catch (Exception e) {
+            Gson g = new Gson();            
+            String msgJson = g.toJson("E-mail já cadastrado");
+            String response = g.toJson(msgJson);
+            return response;
+        }
+        Gson g = new Gson();            
+        String msgJson = g.toJson("E-mail já cadastrado");
+        String response = g.toJson(msgJson);    
+        return response;
     }
-
-    private User BCryptPasswordEncoder(String pass) {
-        return null;
-    }
-	
 }

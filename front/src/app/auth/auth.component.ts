@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AuthServiceService } from '../services/auth-service.service'
 import {NgForm} from '@angular/forms';
-
+import { Router } from '@angular/router';
 import {AuthType} from '../models/AuthType';
 
 interface dataPost {
@@ -22,7 +22,7 @@ export class AuthComponent implements OnInit {
   
   POST:AuthType;
 
-  constructor(private http: HttpClient, private authServiceService: AuthServiceService) { }
+  constructor(private http: HttpClient, private authServiceService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +37,15 @@ export class AuthComponent implements OnInit {
     console.log(this.POST)
     
     this.authServiceService.login({userName:"pedro", password:"vaisegurando"}).subscribe((res) => {
-      console.log(res);
+      if(res != "" || res!= null) {
+
+        let user = res;
+        console.log(user);
+        localStorage.setItem('token', JSON.stringify(user));
+        this.router.navigate(['/main']);
+      } else {
+        alert("Não autorizado");
+      }
     })
   }
 

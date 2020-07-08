@@ -22,6 +22,12 @@ public class User implements Serializable {
     private String userName;
     private String password;
     private String email;
+    /*
+        0 = webmaster
+        1 = operacional
+        2 = usuario
+    */ 
+    private String role;
 
     public String getUserName() {
         return userName;
