@@ -1,16 +1,18 @@
-<div class="container-fluid text-center p-5">
-    <div class="container">
-        <h2 class="display-5 mb-5">Seja bem vindo!</h2>
-        <form class="col-6 text-center mr-auto ml-auto" #f="ngForm" (ngSubmit)="login(f)">
-            <div class="form-group">
-                <label for="text-left" class="font-weight-bold">E-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entre com seu e-mail">
+<section>
+    <div class="form-login">
+        <h2>Bem vindo!</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy eirmod tempor</p>
+        <form #f="ngForm" (ngSubmit)="login(f)">
+            <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+            <input type="password" id="inputSenha" placeholder="Senha">
+            
+            <div class="cadastro">
+                <p>Não tem uma conta?</p>
+                <a [routerLink]="['/cadastro']">Cadastre-se</a>
             </div>
-            <div class="form-group">
-                <label for="text-left" class="font-weight-bold">Senha</label>
-                <input type="password" class="form-control" id="inputSenha" placeholder="Entre com sua senha">
-            </div>
-            <button type="submit" class="btn btn-success btn-block">Submit</button>
+
+            <button type="submit">Entrar</button>
         </form>
     </div>    
-</div>
+</section>
+
