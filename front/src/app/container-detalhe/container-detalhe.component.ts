@@ -2,25 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {NgForm} from '@angular/forms';
-
-
-interface Response {
-  id: Number,
-  nomeCliente: String, 
-  numeroContainer: String, 
-  statusContainer: String,
-  categoriaContainer: String,
-  tipoContainer: Number
-}
-
-interface dataUpdate {
-  id: Number,
-  nomeCliente: String, 
-  numeroContainer: String, 
-  statusContainer: String,
-  categoriaContainer: String,
-  tipoContainer: Number
-}
+import { ContainerServiceService } from '../services/container-service.service';
 
 @Component({
   selector: 'app-container-detalhe',
@@ -29,11 +11,13 @@ interface dataUpdate {
 })
 export class ContainerDetalheComponent implements OnInit {
   index: String; 
-  data: Response; 
-  dataUpdate: dataUpdate;
+  data; 
+  dataUpdate;
   
 
-  constructor(private route:  ActivatedRoute, private http: HttpClient) { }
+  constructor(private route:  ActivatedRoute,
+    private containerService: ContainerServiceService
+    ) { }
   
   ngOnInit() {
     this.route.paramMap.subscribe(
@@ -46,28 +30,19 @@ export class ContainerDetalheComponent implements OnInit {
   }
 
   getContainer(index) {
-    this.http.get<Response>(`http://localhost:8080/api/containers/${index}`)
-    .subscribe(data => {
-      this.data = data;
-    });
+    this.containerService.getContainerById(index).subscribe(res => {
+     console.log(res);
+     
+      this.data = res
+    })
   }
 
   update(f: NgForm) {
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    }
-
     this.dataUpdate = f.value;
-    console.log(this.dataUpdate)
-    this.http.put(`http://localhost:8080/api/containers/${f.value.id}`, JSON.stringify(this.dataUpdate), httpOptions).subscribe(
-      res => {
-        console.log(res);
-        alert("Container atualizado com sucesso!")
-      },
-      err => {
-        console.log(err)
-        alert('Houve um problema ao atualizar o container');
-      });
+    this.containerService.updateContainer(this.dataUpdate, this.index).subscribe(res => {
+     console.log(res);
+     
+    })
   }
 
 }

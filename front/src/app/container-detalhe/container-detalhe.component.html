@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="this.data">
   <h2 class="text-center mt-5 mb-5">Atualizar Container</h2>
   <div class="container">
     <form class="p5 m-5" #f="ngForm" (ngSubmit)="update(f)">
@@ -9,7 +9,7 @@
         role="button"
         >Voltar</a
       >
-      <div class="form-group">
+      <!-- <div class="form-group">
         <input
           type="hidden"
           class="form-control"
@@ -20,7 +20,7 @@
           required
           #id="ngModel"
         />
-      </div>
+      </div> -->
 
       <div class="form-group">
         <label for="nome_cliente">Nº do equipamento</label>
@@ -28,25 +28,25 @@
           type="text"
           class="form-control"
           id="nome_cliente"
-          placeholder="{{ data.nomeCliente }}"
-          name="nomeCliente"
-          ngModel="{{ data.nomeCliente }}"
+          placeholder="Nº"
+          name="cd_numero_cntr"
+          ngModel="{{ data.cd_numero_cntr }}"
           required
-          #nomeCliente="ngModel"
+          #cd_numero_cntr="ngModel"
         />
       </div>
 
       <div class="form-group">
-        <label for="numero_container">Descrição do equipamento</label>
+        <label for="numero_container">Status do equipamento</label>
         <input
           type="text"
           class="form-control"
           id="numero_container"
-          placeholder="Nº container"
-          name="numeroContainer"
-          ngModel="{{ data.numeroContainer }}"
+          placeholder="Status"
+          name="nm_status"
+          ngModel="{{ data.nm_status }}"
           required
-          #nomeCliente="ngModel"
+          #nm_status="ngModel"
         />
       </div>
 
@@ -55,14 +55,15 @@
         <select
           class="form-control"
           id="tipo_container"
-          name="tipoContainer"
-          ngModel="{{ data.tipoContainer }}"
+          name="nm_tipo"
+          ngModel="{{ data.nm_tipo }}"
           required
-          #tipoContainer="ngModel"
+          #nm_tipo="ngModel"
         >
-          <option value="0">hospitalar</option>
-          <option value="1">industrial</option>
-          <option value="2">eletrônico</option>
+       
+          <option value="hospitalar">hospitalar</option>
+          <option value="industrial">industrial</option>
+          <option value="eletrônico">eletrônico</option>
         </select>
       </div>
 

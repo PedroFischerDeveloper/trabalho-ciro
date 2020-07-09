@@ -21,20 +21,19 @@ export class ContaineresComponent implements OnInit {
 
   getTodosContainer() {
     this.containerService.getContainer().subscribe(res => {
-      this.data = res
+      console.log(res);
       
+      this.data = res
     })
   }
 
-  deletarContainer(id) {
-    this.http.delete(`http://localhost:8080/containers/${id}`).subscribe(
-      (res) => {
-        console.log(res);
-        this.getTodosContainer();
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+  remove(id) {
+   
+    this.containerService.deleteContainer(id).subscribe(res => {
+      console.log(res);
+      setTimeout(() => {
+        this.getTodosContainer()
+      }, 500);
+    })
   }
 }

@@ -21,27 +21,27 @@
     <form #f="ngForm" (ngSubmit)="create(f)">
 
       <label for="nome_cliente">Nome do navio</label>
-      <input type="text" id="nome_cliente" placeholder="Nome do Navio" name="nomeNavio" ngModel required
+      <input type="text" id="nome_cliente" placeholder="Nome do Navio" name="nm_navio" ngModel required
         #nomeNavio="ngModel" />
 
       <label for="numero_container">Data início</label>
-      <input type="date" id="numero_container" placeholder="Nº container" name="dataInicio" ngModel required
+      <input type="date" id="numero_container" placeholder="Nº container" name="dt_inicio" ngModel required
         #dataInicio="ngModel" />
 
       <label for="numero_container">Data fim</label>
-      <input type="date" id="numero_container" placeholder="Nº container" name="dataFim" ngModel required
+      <input type="date" id="numero_container" placeholder="Nº container" name="dt_fim" ngModel required
         #dataFim="ngModel" />
 
       <label for="tipo_container">Selecione um container</label>
-      <select id="tipo_container" name="containerId" ngModel required #numeroContainer="ngModel">
+      <select id="tipo_container" name="cliente_id" ngModel required #numeroContainer="ngModel">
         <option value="" disabled selected>Selecione um container</option>
-        <option *ngFor="let d of dataContainer" value={{d.id}}>Nº: {{d.numeroContainer}}</option>
+        <option *ngFor="let d of dataContainer" value={{d.id}}>Nº: {{d.cd_numero_cntr}}</option>
       </select>
 
 
 
       <label for="tipo_container">Tipo Movimentação</label>
-      <select id="tipo_container" name="tipoMovimentacao" ngModel required #tipoMovimentacao="ngModel">
+      <select id="tipo_container" name="nm_tipo_movimentacao" ngModel required #tipoMovimentacao="ngModel">
         <option value="" disabled selected>Tipo de movimentação</option>
         <option>Embarque</option>
         <option>Desembarque</option>

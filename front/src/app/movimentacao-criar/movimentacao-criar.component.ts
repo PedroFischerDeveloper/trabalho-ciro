@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {NgForm} from '@angular/forms';
+import { ContainerServiceService } from '../services/container-service.service';
+import { MovimentacaoServiceService } from '../services/movimentacao-service.service';
 
 interface dataPost {
   nomeNavio: String,
@@ -26,39 +27,32 @@ interface ResponseContainers {
 })
 export class MovimentacaoCriarComponent implements OnInit {
   dataPost: dataPost;
-  dataContainer: ResponseContainers;
+  dataContainer;
   
-  constructor(private http: HttpClient) { }
+  constructor(
+    private containerService: ContainerServiceService,
+    private movimentacaoService: MovimentacaoServiceService) { }
 
   ngOnInit(): void {
     this.getContainers();
   }
 
   getContainers() {
-    this.http.get<ResponseContainers>('http://localhost:8080/api/containers')
+    this.containerService.getContainer()
     .subscribe(data => {
-      console.log(data)
+      console.log(data);
+      
       this.dataContainer = data;
     });
   }
 
   create(f: NgForm) {
-    
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    }
-
     this.dataPost = f.value;
-    console.log(JSON.stringify(this.dataPost))
+    console.log(this.dataPost);
     
-    this.http.post('http://localhost:8080/api/movimentacoes', JSON.stringify(this.dataPost), httpOptions).subscribe(
-      res => {
-        alert('Movimentação criada com sucesso');
-      },
-      err => {
-        console.log(err)
-        alert('Houve um problema ao criar o movimentação');
-      });
+      this.movimentacaoService.criarMovimentacao(this.dataPost).subscribe(res => {
+       alert(`Criada movimentação para o navio: ${res['nm_navio']}`)
+      })
   }
 
 }

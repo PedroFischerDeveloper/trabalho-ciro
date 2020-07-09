@@ -36,10 +36,10 @@
         type="text"
         id="nome_cliente"
         placeholder="Nº do equipamento"
-        name="nomeCliente"
+        name="cd_numero_cntr"
         ngModel
         required
-        #nomeCliente="ngModel"
+        #cd_numero_cntr="ngModel"
       />
 
       <label for="numero_container">situação equipamento</label>
@@ -47,23 +47,23 @@
         type="text"
         id="numero_container"
         placeholder="Nº container"
-        name="numeroContainer"
+        name="nm_status"
         ngModel
         required
-        #numeroContainer="ngModel"
+        #nm_status="ngModel"
       />
 
       <label for="tipo_container">Tipo de equipamento</label>
       <select
         id="tipo_container"
-        name="tipoContainer"
+        name="nm_tipo"
         ngModel
         required
-        #tipoContainer="ngModel"
+        #nm_tipo="ngModel"
       >
-        <option value="0">hospitalar</option>
-        <option value="1">industrial</option>
-        <option value="2">eletrônico</option>
+        <option value="hospitalar">hospitalar</option>
+        <option value="industrial">industrial</option>
+        <option value="eletrônico">eletrônico</option>
       </select>
 
       <!-- <label for="tipo_container">Status</label>

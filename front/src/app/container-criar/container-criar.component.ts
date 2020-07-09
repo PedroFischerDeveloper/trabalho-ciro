@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {NgForm} from '@angular/forms';
+import { ContainerServiceService } from '../services/container-service.service';
 
 
 interface Container {   
@@ -27,9 +28,11 @@ interface dataPost {
 export class ContainerCriarComponent implements OnInit {
 
   container:Container;
-  dataPOST:dataPost;
+  dataPOST;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private containerService: ContainerServiceService,
+  ) { }
 
   ngOnInit(): void {
 
@@ -37,21 +40,11 @@ export class ContainerCriarComponent implements OnInit {
   
 
   create(f: NgForm) {
-    
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    }
-
     this.dataPOST = f.value;
-    
-    this.http.post('http://localhost:8080/api/containers', JSON.stringify(this.dataPOST), httpOptions).subscribe(
-      res => {
-        alert('Container criada com sucesso');
-      },
-      err => {
-        console.log(err)
-        alert('Houve um problema ao criar o container');
-      });
+      this.containerService.criarContainer(this.dataPOST).subscribe(res => {
+       console.log(res);
+       
+      })
   }
 
 }

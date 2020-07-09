@@ -1,12 +1,12 @@
 <app-nav-bar></app-nav-bar>
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="this.data">
     <h2 class="text-center mt-5 mb-5">Atualizar Movimentação</h2>
     <div class="container">
       <form class="p5 m-5" #f="ngForm" (ngSubmit)="update(f)">
         <a class="btn btn-primary mb-2" [routerLink]="['/movimentacoes']" role="button"
           >Voltar</a
         >
-        <div class="form-group">
+        <!-- <div class="form-group">
           <input
             type="hidden"
             class="form-control"
@@ -15,16 +15,17 @@
             required 
             #id="ngModel"
           />
-        </div>        
+        </div>         -->
         <div class="form-group">
           <label for="nome_navio">Nome do navio</label>
           <input
+            value="{{data.nm_navio}}"
             type="text"
             class="form-control"
             id="nome_navio"
             placeholder="Nome do navio"
-            name="nomeNavio" 
-            ngModel={{data.nomeNavio}} 
+            name="nm_navio" 
+            ngModel="{{ data.nm_navio }}"
             required 
             #nomeNavio="ngModel"
           />
@@ -33,12 +34,13 @@
         <div class="form-group">
           <label for="numero_container">Data inicio</label>
           <input
+          value="{{data.dt_inicio}}"
             type="date"
             class="form-control"
             id="numero_container"
             placeholder="Nº container"
-            name="dataInicio" 
-            ngModel={{data.dataInicio}} 
+            name="dt_inicio" 
+            ngModel="{{ data.dt_inicio }}"
             required #dataInicio="ngModel"
           />
         </div>
@@ -46,12 +48,13 @@
         <div class="form-group">
             <label for="numero_container">Data fim</label>
             <input
+            value="{{data.dt_fim}}"
               type="date"
               class="form-control"
               id="numero_container"
               placeholder="Nº container"
-              name="dataFim" 
-              ngModel={{data.dataFim}} 
+              name="dt_fim" 
+              ngModel={{data.dt_fim}} 
               required #dataFim="ngModel"
             />
           </div>
@@ -67,7 +70,7 @@
             #numeroContainer="ngModel"
             >
             <option selected>Selecione um container</option>
-            <option *ngFor="let d of dataContainer" value={{d.id}}>Nº: {{d.numeroContainer}}</option>
+            <option *ngFor="let d of dataContainer" value={{d.id}}>Nº: {{d.cd_numero_cntr}}</option>
           </select>
         </div>
         
@@ -76,11 +79,12 @@
           <select 
             class="form-control" 
             id="tipo_container"
-            name="tipoMovimentacao" 
-            ngModel={{data.tipoMovimentacao}} 
+            name="nm_tipo_movimentacao" 
+            ngModel={{data.nm_tipo_movimentacao}} 
             required 
             #tipoMovimentacao="ngModel"
             >
+            <option selected>{{data.nm_tipo_movimentacao}}</option>
             <option>Embarque</option>
             <option>Desembarque</option>
             <option>Gate In</option>

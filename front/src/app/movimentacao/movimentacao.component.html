@@ -32,13 +32,13 @@
             <th class="canto2" scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody *ngFor="let d of this.data; index as index">
+        <tbody *ngFor="let d of this.data">
           <tr>
             <th scope="row">{{d.id}}</th>
-            <td>{{d.nomeNavio}}</td>
-            <td>{{d.dataInicio}}</td>
-            <td>{{d.dataFim}}</td>
-            <td>{{d.tipoMovimentacao}}</td>
+            <td>{{d.nm_navio}}</td>
+            <td>{{d.dt_inicio}}</td>
+            <td>{{d.dt_fim}}</td>
+            <td>{{d.nm_tipo_movimentacao}}</td>
             <a
               class="btn btn-primary text-light mr-2"
               [routerLink]="['/detalhe-movimentacoes', d.id]"

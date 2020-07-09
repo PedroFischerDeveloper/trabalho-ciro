@@ -33,12 +33,12 @@
             <th class="canto2" scope="col">AÇÕES</th>
           </tr>
         </thead>
-        <tbody *ngFor="let d of this.data; index as index">
+        <tbody *ngFor="let d of this.data">
           <tr>
             <th scope="row">{{ d.id }}</th>
-            <td>{{ d.nomeCliente }}</td>
-            <td>{{ d.numeroContainer }}</td>
-            <td>{{ d.tipoContainer }}</td>
+            <td>{{ d.cd_numero_cntr }}</td>
+            <td>{{ d.nm_status }}</td>
+            <td>{{ d.nm_tipo }}</td>
             <!-- <td>{{ d.statusContainer }}</td>
             <td>{{ d.categoriaContainer }}</td> -->
             <a
@@ -48,7 +48,7 @@
               >Editar</a>
             <a
               class="btn btn-danger ml-2 text-light p-2"
-              (click)="deletarContainer(d.id)"
+              (click)="remove(d.id)"
               role="button"
               >Deletar</a
             >
