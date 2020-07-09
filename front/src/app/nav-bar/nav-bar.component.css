@@ -1,0 +1,16 @@
+nav img {
+  width: 220px;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.navbar {
+  background-color: #191919!important;
+  box-shadow: 0px 7px 11px 1px rgba(0,0,0,0.75)!important;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.home {
+  margin-left: 180px;
+}
