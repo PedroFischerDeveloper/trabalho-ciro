@@ -7,6 +7,7 @@ Membros do grupo:
 - Guilherme Ferreira
 - Julliana Samora
 - Pedro Fischer
+- Vitor Henrique
 
 Para instalar as dependências, basta rodar o seguinte comando:
 
