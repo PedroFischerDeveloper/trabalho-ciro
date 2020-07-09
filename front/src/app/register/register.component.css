@@ -1,0 +1,89 @@
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #191919;
+    background-image: url(/../../assets/img/bck.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.form-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    margin-right: 100px;
+    background-color: #191919;
+    border-radius: 10px;
+    padding: 35px 80px;
+    box-shadow: 3px 3px 6px #00000029;
+}
+
+h2 {
+    color: #FFBE2E;
+    text-transform: uppercase;
+}
+
+p {
+    width: 100%;
+    text-align: left;
+    color: #D2D2D2;
+    margin-top: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+input, select{
+    width: 100%;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    color: #191919;
+    margin-bottom: 25px;
+}
+
+::-webkit-input-placeholder {
+    color: #191919;
+ }
+
+a {
+    width: 50%;
+    text-decoration: none;
+    color: #FFBE2E;
+    text-align: center;
+}
+
+button {
+    width: 50%;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    background-color: #FFBE2E;
+    color: #191919;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.1em;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}

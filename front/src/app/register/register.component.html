@@ -1,51 +1,24 @@
-<div class="container-fluid text-center p-5">
-  <div class="container">
-    <h2 class="display-5 mb-5">Seja bem vindo!</h2>
-    <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit(form.value)"
-      class="col-6 text-center mr-auto ml-auto"
-    >
-      <div class="form-group">
-        <label for="text-left" class="font-weight-bold">Nome</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Entre com seu nome"
-          required
-          formControlName="nome"
-        />
-      </div>
-      <div class="form-group">
-        <label class="font-weight-bold" for="tipo_container">Regra</label>
-        <select class="form-control" required formControlName="regra">
-          <option>Administrativo</option>
-          <option>Operacional</option>
-          <option>TI</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="text-left" class="font-weight-bold">E-mail</label>
-        <input
-          type="email"
-          class="form-control"
-          placeholder="Entre com seu e-mail"
-          required
-          formControlName="email"
-        />
-      </div>
-      <div class="form-group">
-        <label for="text-left" class="font-weight-bold">Senha</label>
-        <input
-          type="password"
-          class="form-control"
-          placeholder="Entre com sua senha"
-          formControlName="senha"
-          required
-        />
-      </div>
+<section>
+  <div class="form-cadastro">
+    <h2>Cadastro</h2>
+    <p>Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy eirmod tempor</p>
 
-      <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <input type="text" placeholder="Nome" required formControlName="nome" />
+      <select placeholder="Regra" required formControlName="regra">
+        <option value="" disabled selected>Regra</option>
+        <option>Administrativo</option>
+        <option>Operacional</option>
+        <option>TI</option>
+      </select>
+      <input type="email" placeholder="E-mail" required formControlName="email" />
+      <input type="password" placeholder="Senha" formControlName="senha" required />
+
+      <div class="cadastro">
+        <a [routerLink]="['/']">Voltar</a>
+        <button type="submit">Cadastrar</button>
+      </div>
+      
     </form>
   </div>
-</div>
+</section>
