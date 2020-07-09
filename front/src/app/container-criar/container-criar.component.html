@@ -14,84 +14,43 @@
     </li>
     </ul>
 </nav>
-<div class="container-fluid">
-    <h2 class="text-center mt-5 mb-5">Registrar Container</h2>
-    <div class="container">
-      <form class="p5 m-5" #f="ngForm" (ngSubmit)="create(f)">
-        <a class="btn btn-primary mb-2" [routerLink]="['/containeres']" role="button"
-          >Voltar</a
-        >
+<section>
+  <div class="form-criar">
+    <h2>Registrar Equipamento</h2>
+    <p>Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy eirmod tempor</p>
 
-        <div class="form-group">
-          <label for="nome_cliente">Nome do cliente</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nome_cliente"
-            placeholder="Nome do cliente"
-            name="nomeCliente"
-            ngModel
-            required #nomeCliente="ngModel"
-          />
-        </div>
+    <form class="p5 m-5" #f="ngForm" (ngSubmit)="create(f)">
 
-        <div class="form-group">
-          <label for="numero_container">Número do container</label>
-          <input
-            type="text"
-            class="form-control"
-            id="numero_container"
-            placeholder="Nº container"
-            name="numeroContainer"
-            ngModel
-            required #numeroContainer="ngModel"
-          />
-        </div>
+      <label for="nome_cliente">Nome do cliente</label>
+      <input type="text" id="nome_cliente" placeholder="Nome do cliente" name="nomeCliente" ngModel required #nomeCliente="ngModel" />
 
-        <div class="form-group">
-          <label for="tipo_container">Tipo</label>
-          <select
-            class="form-control"
-            id="tipo_container"
-            name="tipoContainer"
-            ngModel
-            required
-            #tipoContainer="ngModel"
-            >
-            <option value="20">20</option>
-            <option value="40">40</option>
-          </select>
-        </div>
+      <label for="numero_container">Número do container</label>
+      <input type="text" id="numero_container" placeholder="Nº container" name="numeroContainer" ngModel required #numeroContainer="ngModel" />
 
-        <div class="form-group">
-          <label for="tipo_container">Status</label>
-          <select
-            class="form-control"
-            id="tipo_container"
-            name="statusContainer"
-            ngModel
-            required #statusContainer="ngModel"
-            >
-            <option>Cheio</option>
-            <option>Vazio</option>
-          </select>
-        </div>
+      <label for="tipo_container">Tipo</label>
+      <select id="tipo_container" name="tipoContainer" ngModel required #tipoContainer="ngModel">
+        <option value="20">20</option>
+        <option value="40">40</option>
+      </select>
 
-        <div class="form-group">
-          <label for="categoria_container">Categoria Container</label>
-          <select
-            class="form-control"
-            id="categoria_container"
-            name="categoriaContainer"
-            ngModel
-            required #categoriaContainer="ngModel"
-            >
-            <option>Importação</option>
-            <option>Exportação</option>
-          </select>
-        </div>
+      <label for="tipo_container">Status</label>
+      <select id="tipo_container" name="statusContainer" ngModel required #statusContainer="ngModel">
+        <option>Cheio</option>
+        <option>Vazio</option>
+      </select>
 
-        <button type="submit" class="btn btn-success" >Salvar</button>
-      </form>
-    </div>
+      <label for="categoria_container">Categoria Container</label>
+      <select id="categoria_container" name="categoriaContainer" ngModel required #categoriaContainer="ngModel">
+        <option>Importação</option>
+        <option>Exportação</option>
+      </select>
+
+      <div class="cadastro">
+        <button type="submit">Salvar</button>
+        <a [routerLink]="['/containeres']" role="button">Voltar</a>
+      </div>
+    </form>
+
   </div>
+</section>
+>>>>>>> c390a7d33be15f74c592f77d1ba8de516a402e68
