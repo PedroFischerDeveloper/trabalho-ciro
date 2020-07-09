@@ -102,12 +102,14 @@ button {
     font-size: 1.1em;
 }
 
-/*NAV*/
+/*-- NAV*/
 nav img {
   width: 220px;
   margin-left: 20px;
   padding: 20px;
 }
+
+
 
 .navbar {
   background-color: #191919!important;
