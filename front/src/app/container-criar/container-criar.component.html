@@ -1,4 +1,19 @@
-<app-nav-bar></app-nav-bar>
+<!-- <app-nav-bar></app-nav-bar> -->
+<nav class="navbar navbar-dark bg-dark">
+  <img src="/../../assets/img/logo-white.png">
+
+    <ul class="nav text-white">
+      <li class="nav-item">
+        <a class="eqp ativo nav-link active text-white" [routerLink]="['/containeres']">equipamentos</a>
+      </li>
+      <li class="nav-item">
+        <a class="mov nav-link active text-white" [routerLink]="['/movimentacoes']">movimentações</a>
+      </li>
+      <li class="nav-item">
+        <a class="home nav-link active text-white" [routerLink]="['']">sair</a>
+    </li>
+    </ul>
+</nav>
 <div class="container-fluid">
     <h2 class="text-center mt-5 mb-5">Registrar Container</h2>
     <div class="container">
@@ -6,7 +21,7 @@
         <a class="btn btn-primary mb-2" [routerLink]="['/containeres']" role="button"
           >Voltar</a
         >
-        
+
         <div class="form-group">
           <label for="nome_cliente">Nome do cliente</label>
           <input
@@ -14,12 +29,12 @@
             class="form-control"
             id="nome_cliente"
             placeholder="Nome do cliente"
-            name="nomeCliente" 
-            ngModel 
+            name="nomeCliente"
+            ngModel
             required #nomeCliente="ngModel"
           />
         </div>
-  
+
         <div class="form-group">
           <label for="numero_container">Número do container</label>
           <input
@@ -27,57 +42,56 @@
             class="form-control"
             id="numero_container"
             placeholder="Nº container"
-            name="numeroContainer" 
-            ngModel 
+            name="numeroContainer"
+            ngModel
             required #numeroContainer="ngModel"
           />
         </div>
-  
+
         <div class="form-group">
           <label for="tipo_container">Tipo</label>
-          <select 
-            class="form-control" 
+          <select
+            class="form-control"
             id="tipo_container"
-            name="tipoContainer" 
-            ngModel 
-            required 
+            name="tipoContainer"
+            ngModel
+            required
             #tipoContainer="ngModel"
             >
             <option value="20">20</option>
             <option value="40">40</option>
           </select>
         </div>
-  
+
         <div class="form-group">
           <label for="tipo_container">Status</label>
-          <select 
-            class="form-control" 
+          <select
+            class="form-control"
             id="tipo_container"
-            name="statusContainer" 
-            ngModel 
+            name="statusContainer"
+            ngModel
             required #statusContainer="ngModel"
             >
             <option>Cheio</option>
             <option>Vazio</option>
           </select>
         </div>
-  
+
         <div class="form-group">
           <label for="categoria_container">Categoria Container</label>
-          <select 
-            class="form-control" 
-            id="categoria_container" 
-            name="categoriaContainer" 
-            ngModel 
+          <select
+            class="form-control"
+            id="categoria_container"
+            name="categoriaContainer"
+            ngModel
             required #categoriaContainer="ngModel"
             >
             <option>Importação</option>
             <option>Exportação</option>
           </select>
         </div>
-  
+
         <button type="submit" class="btn btn-success" >Salvar</button>
       </form>
     </div>
   </div>
-  
