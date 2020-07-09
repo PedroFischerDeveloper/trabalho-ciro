@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { RegisterType } from '../models/AuthType';
 import { AuthServiceService } from '../services/auth-service.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   form;
   constructor(
     private authService: AuthServiceService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.form = this.fb.group({
       userName: '',
@@ -37,7 +38,9 @@ export class RegisterComponent implements OnInit {
       alert('Exitem campos vazios');
     }
     this.authService.register(this.dataPOST).subscribe((res) => {
-      console.log(res);
+      if (res) {
+        this.router.navigate(['login']);
+      }
     });
   }
 }

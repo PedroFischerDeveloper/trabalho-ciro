@@ -2,63 +2,71 @@
 <div class="container-fluid">
   <h2 class="text-center mt-5 mb-5">Atualizar Container</h2>
   <div class="container">
-
     <form class="p5 m-5" #f="ngForm" (ngSubmit)="update(f)">
-      <a class="btn btn-primary mb-2" [routerLink]="['/containeres']" role="button">Voltar</a>
+      <a
+        class="btn btn-primary mb-2"
+        [routerLink]="['/containeres']"
+        role="button"
+        >Voltar</a
+      >
       <div class="form-group">
         <input
           type="hidden"
           class="form-control"
           id="id"
           placeholder="id"
-          name="id" 
-          ngModel="{{data.id}}"
-          required 
+          name="id"
+          ngModel="{{ data.id }}"
+          required
           #id="ngModel"
         />
       </div>
 
       <div class="form-group">
-        <label for="nome_cliente">Nome do cliente</label>
+        <label for="nome_cliente">Nº do equipamento</label>
         <input
           type="text"
           class="form-control"
           id="nome_cliente"
           placeholder="{{ data.nomeCliente }}"
-          name="nomeCliente" 
-          ngModel="{{ data.nomeCliente }}" 
-          required #nomeCliente="ngModel"
+          name="nomeCliente"
+          ngModel="{{ data.nomeCliente }}"
+          required
+          #nomeCliente="ngModel"
         />
       </div>
 
       <div class="form-group">
-        <label for="numero_container">Número do container</label>
+        <label for="numero_container">Descrição do equipamento</label>
         <input
           type="text"
           class="form-control"
           id="numero_container"
           placeholder="Nº container"
-          name="numeroContainer" 
-          ngModel="{{data.numeroContainer}}"
-          required #nomeCliente="ngModel"
+          name="numeroContainer"
+          ngModel="{{ data.numeroContainer }}"
+          required
+          #nomeCliente="ngModel"
         />
       </div>
 
       <div class="form-group">
-        <label for="tipo_container">Tipo</label>
-        <select 
-          class="form-control" 
+        <label for="tipo_container">Tipo de equipamento</label>
+        <select
+          class="form-control"
           id="tipo_container"
-          name="tipoContainer" 
-          ngModel="{{data.tipoContainer}}" 
-          required #tipoContainer="ngModel"
-          >
-          <option value="20">20</option>
-          <option value="40">40</option>
+          name="tipoContainer"
+          ngModel="{{ data.tipoContainer }}"
+          required
+          #tipoContainer="ngModel"
+        >
+          <option value="0">hospitalar</option>
+          <option value="1">industrial</option>
+          <option value="2">eletrônico</option>
         </select>
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="tipo_container">Status</label>
         <select 
           class="form-control" 
@@ -70,9 +78,9 @@
           <option>Cheio</option>
           <option>Vazio</option>
         </select>
-      </div>
+      </div> -->
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="categoria_container">Categoria Container</label>
         <select 
           class="form-control" 
@@ -84,7 +92,7 @@
           <option>Importação</option>
           <option>Exportação</option>
         </select>
-      </div>
+      </div> -->
 
       <button type="submit" class="btn btn-success">Salvar</button>
     </form>

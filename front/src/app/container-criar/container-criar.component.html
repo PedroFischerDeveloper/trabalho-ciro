@@ -1,55 +1,87 @@
 <!-- <app-nav-bar></app-nav-bar> -->
 <nav class="navbar navbar-dark bg-dark">
-  <img src="/../../assets/img/logo-white.png">
+  <img src="/../../assets/img/logo-white.png" />
 
-    <ul class="nav text-white">
-      <li class="nav-item">
-        <a class="eqp ativo nav-link active text-white" [routerLink]="['/containeres']">equipamentos</a>
-      </li>
-      <li class="nav-item">
-        <a class="mov nav-link active text-white" [routerLink]="['/movimentacoes']">movimentações</a>
-      </li>
-      <li class="nav-item">
-        <a class="home nav-link active text-white" [routerLink]="['']">sair</a>
+  <ul class="nav text-white">
+    <li class="nav-item">
+      <a
+        class="eqp ativo nav-link active text-white"
+        [routerLink]="['/containeres']"
+        >equipamentos</a
+      >
     </li>
-    </ul>
+    <li class="nav-item">
+      <a
+        class="mov nav-link active text-white"
+        [routerLink]="['/movimentacoes']"
+        >movimentações</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="home nav-link active text-white" [routerLink]="['']">sair</a>
+    </li>
+  </ul>
 </nav>
 <section>
   <div class="form-criar">
     <h2>Registrar Equipamento</h2>
-    <p>Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy eirmod tempor</p>
+    <p>
+      Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy
+      eirmod tempor
+    </p>
 
     <form class="p5 m-5" #f="ngForm" (ngSubmit)="create(f)">
+      <label for="nome_cliente">Nº do equipamento</label>
+      <input
+        type="text"
+        id="nome_cliente"
+        placeholder="Nº do equipamento"
+        name="nomeCliente"
+        ngModel
+        required
+        #nomeCliente="ngModel"
+      />
 
-      <label for="nome_cliente">Nome do cliente</label>
-      <input type="text" id="nome_cliente" placeholder="Nome do cliente" name="nomeCliente" ngModel required #nomeCliente="ngModel" />
+      <label for="numero_container">Descrição do equipamento</label>
+      <input
+        type="text"
+        id="numero_container"
+        placeholder="Nº container"
+        name="numeroContainer"
+        ngModel
+        required
+        #numeroContainer="ngModel"
+      />
 
-      <label for="numero_container">Número do container</label>
-      <input type="text" id="numero_container" placeholder="Nº container" name="numeroContainer" ngModel required #numeroContainer="ngModel" />
-
-      <label for="tipo_container">Tipo</label>
-      <select id="tipo_container" name="tipoContainer" ngModel required #tipoContainer="ngModel">
-        <option value="20">20</option>
-        <option value="40">40</option>
+      <label for="tipo_container">Tipo de equipamento</label>
+      <select
+        id="tipo_container"
+        name="tipoContainer"
+        ngModel
+        required
+        #tipoContainer="ngModel"
+      >
+        <option value="0">hospitalar</option>
+        <option value="1">industrial</option>
+        <option value="2">eletrônico</option>
       </select>
 
-      <label for="tipo_container">Status</label>
+      <!-- <label for="tipo_container">Status</label>
       <select id="tipo_container" name="statusContainer" ngModel required #statusContainer="ngModel">
         <option>Cheio</option>
         <option>Vazio</option>
-      </select>
+      </select> -->
 
-      <label for="categoria_container">Categoria Container</label>
+      <!-- <label for="categoria_container">Categoria Container</label>
       <select id="categoria_container" name="categoriaContainer" ngModel required #categoriaContainer="ngModel">
         <option>Importação</option>
         <option>Exportação</option>
-      </select>
+      </select> -->
 
       <div class="cadastro">
         <button type="submit">Salvar</button>
         <a [routerLink]="['/containeres']" role="button">Voltar</a>
       </div>
     </form>
-
   </div>
 </section>

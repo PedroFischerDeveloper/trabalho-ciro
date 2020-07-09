@@ -1,15 +1,28 @@
 <nav class="navbar navbar-dark bg-dark">
-    <img src="/../../assets/img/logo-white.png">
+  <img src="/../../assets/img/logo-white.png" />
 
-      <ul class="nav text-white">
-        <li class="nav-item">
-            <a class="home nav-link active text-white" [routerLink]="['']">home</a>
-        </li>
-        <li class="nav-item">
-          <a class="eqp nav-link active text-white" [routerLink]="['/containeres']">equipamentos</a>
-        </li>
-        <li class="nav-item">
-          <a class="mov nav-link active text-white" [routerLink]="['/movimentacoes']">movimentações</a>
-        </li>
-      </ul>
+  <ul class="nav text-white">
+    <li class="nav-item">
+      <a class="home nav-link active text-white" [routerLink]="['']">home</a>
+    </li>
+    <li class="nav-item">
+      <a class="eqp nav-link active text-white" [routerLink]="['/containeres']"
+        >equipamentos</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="mov nav-link active text-white"
+        [routerLink]="['/movimentacoes']"
+        >movimentações</a
+      >
+    </li>
+  </ul>
+
+  <a
+    (click)="logout()"
+    class="mov nav-link active text-white"
+    style="margin-left: auto; cursor: pointer;"
+    >Logout</a
+  >
 </nav>

@@ -26,7 +26,12 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let token = JSON.parse(localStorage.getItem('@user:token'));
+    if (token) {
+      this.router.navigate(['main']);
+    }
+  }
 
   onSubmit(e) {
     this.dataPOST = e;

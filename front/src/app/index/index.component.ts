@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+    let token = JSON.parse(localStorage.getItem('@user:token'));
+    if (!token) {
+      this.router.navigate(['']);
+    }
   }
-
 }
