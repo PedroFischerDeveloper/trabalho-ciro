@@ -1,52 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ContainerServiceService } from '../services/container-service.service';
 
 @Component({
   selector: 'app-containeres',
   templateUrl: './containeres.component.html',
-  styleUrls: ['./containeres.component.css']
+  styleUrls: ['./containeres.component.css'],
 })
 export class ContaineresComponent implements OnInit {
-
   token;
-  data; 
+  data;
   headers;
-  
 
-
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
+  constructor(private http: HttpClient, private containerService: ContainerServiceService) {
     this.getTodosContainer();
-    this.token = JSON.parse( localStorage.getItem('@user:token') );
-    this.token = this.token.replace('"',"").replace('"',"");
-    this.headers = {
-      'Authorization': `Bearer ${this.token}`,
-    };
+   
   }
-  
-  
-  
+
+  ngOnInit(): void {}
+
   getTodosContainer() {
-    this.http.get('http://localhost:8080/containers', 
-    {headers: new HttpHeaders(this.headers)})
-    .subscribe(data => {
-      console.log(data)
-      this.data = data;
-    });
+    this.containerService.getContainer().subscribe(res => {
+      this.data = res
+      
+    })
   }
-  
+
   deletarContainer(id) {
-    this.http.delete(`http://localhost:8080/containers/${id}`)
-    .subscribe(
-      res => {
+    this.http.delete(`http://localhost:8080/containers/${id}`).subscribe(
+      (res) => {
         console.log(res);
         this.getTodosContainer();
       },
-      err => {
-        console.log(err)
-      });
+      (err) => {
+        console.log(err);
+      }
+    );
   }
-
 }
