@@ -1,0 +1,102 @@
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 135vh;
+    background-color: #191919;
+    background-image: url(/../../assets/img/bck-criar.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.form-criar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    margin-right: 100px;
+    background-color: #191919;
+    border-radius: 10px;
+    padding: 35px 80px;
+    box-shadow: 3px 3px 6px #00000029;
+}
+
+h2 {
+    width: 100%;
+    text-align: left;
+    color: #FFBE2E;
+    text-transform: uppercase;
+}
+
+p {
+    width: 100%;
+    text-align: left;
+    color: #D2D2D2;
+    margin-top: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+input, select{
+    width: 100%;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: #191919;
+    margin-bottom: 25px;
+}
+
+label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #D2D2D2;
+}
+
+button {
+    width: 25%;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    background-color: #FFBE2E;
+    color: #191919;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.1em;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.cadastro a {
+    width: 25%;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: 1.5px solid #FFBE2E;
+    text-align: center;
+    margin-left: 20px;
+    color: #FFBE2E;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.1em;
+}
