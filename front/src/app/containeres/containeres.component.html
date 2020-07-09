@@ -25,12 +25,12 @@
         <thead class="table-dark">
           <tr>
             <th class="canto1" scope="col">#</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Nº Equipamento</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Status</th>
-            <th scope="col">Categoria</th>
-            <th class="canto2" scope="col">Actions</th>
+            <th scope="col">Nº do equipamento</th>
+            <th scope="col">situação equipamento</th>
+            <th scope="col">Tipo de equipamento</th>
+            <!-- <th scope="col">Status</th>
+            <th scope="col">Categoria</th> -->
+            <th class="canto2" scope="col">AÇÕES</th>
           </tr>
         </thead>
         <tbody *ngFor="let d of this.data; index as index">
@@ -39,8 +39,8 @@
             <td>{{ d.nomeCliente }}</td>
             <td>{{ d.numeroContainer }}</td>
             <td>{{ d.tipoContainer }}</td>
-            <td>{{ d.statusContainer }}</td>
-            <td>{{ d.categoriaContainer }}</td>
+            <!-- <td>{{ d.statusContainer }}</td>
+            <td>{{ d.categoriaContainer }}</td> -->
             <a
               class="btn btn-primary mr-2 text-light "
               [routerLink]="['/detalhe-container', d.id]"

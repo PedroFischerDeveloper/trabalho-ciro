@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-interface Response {
-  id: Number,
-  nomeCliente: String, 
-  numeroContainer: String, 
-  statusContainer: String,
-  categoriaContainer: String,
-  tipoContainer: Number
-}
 
 @Component({
   selector: 'app-containeres',
@@ -17,7 +9,9 @@ interface Response {
 })
 export class ContaineresComponent implements OnInit {
 
-  data: Response; 
+  token;
+  data; 
+  headers;
   
 
 
@@ -25,17 +19,26 @@ export class ContaineresComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTodosContainer();
+    this.token = JSON.parse( localStorage.getItem('@user:token') );
+    this.token = this.token.replace('"',"").replace('"',"");
+    this.headers = {
+      'Authorization': `Bearer ${this.token}`,
+    };
   }
-
+  
+  
+  
   getTodosContainer() {
-    this.http.get<Response>('http://localhost:8080/api/containers')
+    this.http.get('http://localhost:8080/containers', 
+    {headers: new HttpHeaders(this.headers)})
     .subscribe(data => {
+      console.log(data)
       this.data = data;
     });
   }
   
   deletarContainer(id) {
-    this.http.delete<Response>(`http://localhost:8080/api/containers/${id}`)
+    this.http.delete(`http://localhost:8080/containers/${id}`)
     .subscribe(
       res => {
         console.log(res);
