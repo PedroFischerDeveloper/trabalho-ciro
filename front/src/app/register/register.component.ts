@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { RegisterType } from '../models/AuthType';
+import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-register',
@@ -11,12 +12,15 @@ import { RegisterType } from '../models/AuthType';
 export class RegisterComponent implements OnInit {
   dataPOST: RegisterType;
   form;
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(
+    private authService: AuthServiceService,
+    private fb: FormBuilder
+  ) {
     this.form = this.fb.group({
-      nome: '',
-      regra: '',
+      userName: '',
+      role: '',
       email: '',
-      senha: '',
+      password: '',
     });
   }
 
@@ -24,6 +28,16 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(e) {
     this.dataPOST = e;
-    console.log(this.dataPOST);
+    if (
+      this.dataPOST.userName == '' ||
+      this.dataPOST.email == '' ||
+      this.dataPOST.role == '' ||
+      this.dataPOST.password == ''
+    ) {
+      alert('Exitem campos vazios');
+    }
+    this.authService.register(this.dataPOST).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

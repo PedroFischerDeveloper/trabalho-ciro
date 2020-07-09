@@ -4,8 +4,8 @@ export type AuthType = {
 };
 
 export type RegisterType = {
-  nome: string;
-  regra: string;
+  userName: string;
+  role: string;
   email: string;
-  senha: string;
+  password: string;
 };

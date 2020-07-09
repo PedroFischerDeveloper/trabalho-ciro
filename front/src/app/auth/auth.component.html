@@ -1,18 +1,30 @@
 <section>
-    <div class="form-login">
-        <h2>Bem vindo!</h2>
-        <p>Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy eirmod tempor</p>
-        <form #f="ngForm" (ngSubmit)="login(f)">
-            <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
-            <input type="password" id="inputSenha" placeholder="Senha">
-            
-            <div class="cadastro">
-                <p>Não tem uma conta?</p>
-                <a [routerLink]="['/cadastro']">Cadastre-se</a>
-            </div>
+  <div class="form-login">
+    <h2>Bem vindo!</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy
+      eirmod tempor
+    </p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <input
+        type="text"
+        required
+        formControlName="userName"
+        placeholder="User name"
+      />
+      <input
+        type="password"
+        required
+        formControlName="password"
+        placeholder="Password"
+      />
 
-            <button type="submit">Entrar</button>
-        </form>
-    </div>    
+      <div class="cadastro">
+        <p>Não tem uma conta?</p>
+        <a [routerLink]="['/cadastro']">Cadastre-se</a>
+      </div>
+
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
 </section>
-

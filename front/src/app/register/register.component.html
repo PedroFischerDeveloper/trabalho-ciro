@@ -1,24 +1,41 @@
 <section>
   <div class="form-cadastro">
     <h2>Cadastro</h2>
-    <p>Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy eirmod tempor</p>
+    <p>
+      Lorem ipsum dolor sit amet, consetetur sad-ipscing elitr, sed diam nonumy
+      eirmod tempor
+    </p>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-      <input type="text" placeholder="Nome" required formControlName="nome" />
-      <select placeholder="Regra" required formControlName="regra">
+      <input
+        type="text"
+        placeholder="Nome"
+        required
+        formControlName="userName"
+      />
+      <select placeholder="Regra" required formControlName="role">
         <option value="" disabled selected>Regra</option>
         <option>Administrativo</option>
         <option>Operacional</option>
         <option>TI</option>
       </select>
-      <input type="email" placeholder="E-mail" required formControlName="email" />
-      <input type="password" placeholder="Senha" formControlName="senha" required />
+      <input
+        type="email"
+        placeholder="E-mail"
+        required
+        formControlName="email"
+      />
+      <input
+        type="password"
+        placeholder="Senha"
+        formControlName="password"
+        required
+      />
 
       <div class="cadastro">
         <a [routerLink]="['/']">Voltar</a>
         <button type="submit">Cadastrar</button>
       </div>
-      
     </form>
   </div>
 </section>
