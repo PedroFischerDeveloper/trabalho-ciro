@@ -1,0 +1,91 @@
+* {
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  /* background-color: #191919; */
+  background-image: url(/../../assets/img/bg-main.jpeg);
+  background-position: center;
+  background-size: cover;
+}
+
+.tabela {
+  width: 70%;
+  /* border: 1px solid red; */
+  height: 100vh;
+}
+
+.container-titulo {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid green; */
+  margin-top: 50px;
+  height: 50px;
+}
+
+.titulo  {
+  color: #FFBE2E;
+  text-transform: uppercase;
+}
+
+.btn-criar {
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #FFBE2E;
+  color:  #000;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+.table thead th {
+  border: 0;
+  background-color: #242424;
+  color: #D2D2D2;
+}
+
+.canto1 {
+  border-top-left-radius: 10px;
+}
+
+.canto2 {
+  border-top-right-radius: 10px;
+}
+
+.table td {
+  background-color: #191919!important;
+  color:#D2D2D2;
+}
+
+.table tbody tr th {
+  background-color: #191919!important;
+  color:#D2D2D2;
+}
+
+.table tbody tr td {
+  box-shadow: 7px 6px 19px -5px rgba(0,0,0,0.75)!important;
+}
+
+.p-lorem {
+  color: #D2D2D2;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
