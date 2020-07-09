@@ -11,82 +11,62 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity (name = "tb_containers")
+@Entity(name = "tb_containers")
 @Table(name = "tb_containers")
-
-
 public class ContainerModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @NotNull(message = "Nome cliente é obrigatório")
-    @Valid
-    private String nm_cliente;
     
-    @NotNull(message = "Número do container é obrigatório")
-    @Size(min = 7)
+    @NotNull(message = "Código do container é obrigatório")
     @Valid
     private String cd_numero_cntr;
 
-    @NotNull(message = "Nome tipo é obrigatório")
+    @NotNull(message = "Tipo é obrigatório")
     @Valid
-    private int nm_tipo;
+    private String nm_tipo;
 
     @NotNull(message = "Nome status é obrigatório")
     @Valid
     private String nm_status;
 
-    @NotNull(message = "Nome categoria é obrigatório")
-    @Valid
-    private String nm_categoria;
 
     public ContainerModel() {}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getCd_numero_cntr() {
+		return cd_numero_cntr;
+	}
+
+	public void setCd_numero_cntr(String cd_numero_cntr) {
+		this.cd_numero_cntr = cd_numero_cntr;
+	}
+
+	public String getNm_tipo() {
+		return nm_tipo;
+	}
+
+	public void setNm_tipo(String nm_tipo) {
+		this.nm_tipo = nm_tipo;
+	}
+
+	public String getNm_status() {
+		return nm_status;
+	}
+
+	public void setNm_status(String nm_status) {
+		this.nm_status = nm_status;
+	}
     
-    public long getId() {
-        return id;
-    }
-    
-    public String getNomeCliente() {
-        return nm_cliente;
-    }
-
-    public String setNomeCliente(final String paramNomeCliente) {
-        return this.nm_cliente = paramNomeCliente;
-    }
-
-    public String getNumeroContainer() {
-        return cd_numero_cntr;
-    }
-
-    public String setNumeroContainer(final String paramNumeroContainer) {
-        return this.cd_numero_cntr = paramNumeroContainer;
-    }
-
-    public int getTipoContainer() {
-        return nm_tipo;
-    }
-
-    public int setTipoContainer(final int paramTipoContainer) {
-        return this.nm_tipo = paramTipoContainer;
-    }
-
-    public String getStatusContainer() {
-        return nm_status;
-    }
-
-    public String setStatusContainer(final String paramStatusContainer) {
-        return this.nm_status = paramStatusContainer;
-    }
-
-    public String getCategoriaContainer() {
-        return nm_categoria;
-    }
-
-    public String setCategoriaContainer(final String paramCategoria) {
-        return this.nm_categoria = paramCategoria;
-    }
+   
 
 }

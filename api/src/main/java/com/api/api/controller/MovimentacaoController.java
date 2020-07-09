@@ -73,10 +73,11 @@ public class MovimentacaoController {
             if (velhaMovimentacao == null) {
                 return new ResponseEntity<>(velhaMovimentacao, HttpStatus.NOT_FOUND);
             }
-            velhaMovimentacao.setNomeNavio(novaMovimentacao.getNomeNavio());
-            velhaMovimentacao.setTipoMovimentacao(novaMovimentacao.getTipoMovimentacao());
-            velhaMovimentacao.setDataInicio(novaMovimentacao.getDataInicio());
-			velhaMovimentacao.setDataFim(novaMovimentacao.getDataFim());
+            velhaMovimentacao.setCliente_id(novaMovimentacao.getCliente_id());
+            velhaMovimentacao.setNm_tipo_movimentacao(novaMovimentacao.getNm_tipo_movimentacao());
+            velhaMovimentacao.setDt_inicio(novaMovimentacao.getDt_inicio());
+			velhaMovimentacao.setDt_fim(novaMovimentacao.getDt_fim());
+		
 			
             movimentacaoRepository.save(novaMovimentacao);
 

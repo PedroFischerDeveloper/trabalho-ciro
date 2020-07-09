@@ -41,7 +41,7 @@ public class ContainerController {
 
     @PostMapping("/containers")
     public ResponseEntity<ContainerModel> salvaContainer(@RequestBody ContainerModel container) {
-        try {
+    	try {
             return new ResponseEntity<>(containerRepository.save(container), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,22 +67,22 @@ public class ContainerController {
     }
 
     @PutMapping("/containers/{id}")
-    public ResponseEntity<ContainerModel> atualizaProduto(@RequestBody ContainerModel novoContainer, @PathVariable long id) {
+    public ResponseEntity<ContainerModel> atualizaProduto(@RequestBody ContainerModel novoContainer, @PathVariable("id") long id) {
         try {
             ContainerModel velhoContainer = containerRepository.findById(id);
 
             if (velhoContainer == null) {
                 return new ResponseEntity<>(velhoContainer, HttpStatus.NOT_FOUND);
             }
-            velhoContainer.setNomeCliente(novoContainer.getNomeCliente());
-            velhoContainer.setNumeroContainer(novoContainer.getNumeroContainer());
-            velhoContainer.setTipoContainer(novoContainer.getTipoContainer());
-            velhoContainer.setStatusContainer(novoContainer.getStatusContainer());
-            velhoContainer.setCategoriaContainer(novoContainer.getCategoriaContainer());
+    
+            velhoContainer.setCd_numero_cntr(novoContainer.getCd_numero_cntr());
+            velhoContainer.setNm_status(novoContainer.getNm_status());
+            velhoContainer.setNm_tipo(novoContainer.getNm_tipo());
+        
             
-            containerRepository.save(novoContainer);
+            ContainerModel updated = containerRepository.save(novoContainer);
 
-            return new ResponseEntity<>(novoContainer, HttpStatus.OK);
+            return ResponseEntity.ok().body(updated);
 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
